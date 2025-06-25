@@ -1,0 +1,16 @@
+ {
+	"id": "upgradecards",
+	"name": "Upgrade Cards",
+	"display_name": "Upgrades",
+	"author": ["factwixard"],
+	"description": "Adds upgrades focused on playing cards that flavors and enhances deckbuilding.",
+	"prefix": "upgrd",
+	"main_file": "upgrades.lua",
+	"priority": 0,
+	"badge_colour": "c75062",
+	"badge_text_colour": "FFFFFF",
+	"version": "0.5.0",
+	"dependencies": [
+		"Steamodded (>=1.0.0~BETA-0614a)"
+	],
+}

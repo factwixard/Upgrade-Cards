@@ -177,7 +177,7 @@ SMODS.Consumable {
 	set = 'upgrd_upgrade',
 	atlas = 'upgradecards',
 	pos = { x = 2, y = 0 },
-	config = { max_highlighted = 3, extra = { xchips = 1.5 } },
+	config = { max_highlighted = 3, extra = { xchips = 0.5 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.max_highlighted, card.ability.extra.xchips } }
 	end,
@@ -207,11 +207,7 @@ SMODS.Consumable {
 		delay(0.2)
 		for i = 1, #G.hand.highlighted do
 			G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips or 0 --yes the bonus here starts at 0 on all playing cards, same with xmult
-			if G.hand.highlighted[i].ability.perma_x_chips >= 0.5 then --in game this changes the scaling of any card that has more than "X1.5"
-				G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + card.ability.extra.xchips
-			else --default scaling
-				G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + (card.ability.extra.xchips - 1)
-			end
+			G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + card.ability.extra.xchips
 		end
 		for i = 1, #G.hand.highlighted do
 			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
@@ -242,7 +238,7 @@ SMODS.Consumable {
 	set = 'upgrd_upgrade',
 	atlas = 'upgradecards',
 	pos = { x = 3, y = 0 },
-	config = { max_highlighted = 3, extra = { xmult = 1.5 } },
+	config = { max_highlighted = 3, extra = { xmult = 0.5 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.max_highlighted, card.ability.extra.xmult } }
 	end,
@@ -272,11 +268,7 @@ SMODS.Consumable {
 		delay(0.2)
 		for i = 1, #G.hand.highlighted do
 			G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult or 0
-			if G.hand.highlighted[i].ability.perma_x_mult >= 0.5 then
-				G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + card.ability.extra.xmult
-			else
-				G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + (card.ability.extra.xmult - 1)
-			end
+			G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + card.ability.extra.xmult
 		end
 		for i = 1, #G.hand.highlighted do
 			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
@@ -368,7 +360,7 @@ SMODS.Consumable {
 	set = 'upgrd_upgrade',
 	atlas = 'upgradecards',
 	pos = { x = 5, y = 0 },
-	config = { max_highlighted = 2, extra = { chips = 15, mult = 2, xchips = 1.25, xmult = 1.25, dollars = 1 } },
+	config = { max_highlighted = 2, extra = { chips = 15, mult = 2, xchips = 0.25, xmult = 0.25, dollars = 1 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.max_highlighted, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xchips, card.ability.extra.xmult, card.ability.extra.dollars } }
 	end,
@@ -402,17 +394,9 @@ SMODS.Consumable {
 			G.hand.highlighted[i].ability.perma_h_mult = G.hand.highlighted[i].ability.perma_h_mult or 0
 			G.hand.highlighted[i].ability.perma_h_mult = G.hand.highlighted[i].ability.perma_h_mult + card.ability.extra.mult
 			G.hand.highlighted[i].ability.perma_h_x_chips = G.hand.highlighted[i].ability.perma_h_x_chips or 0
-			if G.hand.highlighted[i].ability.perma_h_x_chips >= 0.25 then --different scaling change due to different scaling number
-				G.hand.highlighted[i].ability.perma_h_x_chips = G.hand.highlighted[i].ability.perma_h_x_chips + card.ability.extra.xchips
-			else
-				G.hand.highlighted[i].ability.perma_h_x_chips = G.hand.highlighted[i].ability.perma_h_x_chips + (card.ability.extra.xchips - 1)
-			end
+			G.hand.highlighted[i].ability.perma_h_x_chips = G.hand.highlighted[i].ability.perma_h_x_chips + card.ability.extra.xchips
 			G.hand.highlighted[i].ability.perma_h_x_mult = G.hand.highlighted[i].ability.perma_h_x_mult or 0
-			if G.hand.highlighted[i].ability.perma_h_x_mult >= 0.25 then
-				G.hand.highlighted[i].ability.perma_h_x_mult = G.hand.highlighted[i].ability.perma_h_x_mult + card.ability.extra.xmult
-			else
-				G.hand.highlighted[i].ability.perma_h_x_mult = G.hand.highlighted[i].ability.perma_h_x_mult + (card.ability.extra.xmult - 1)
-			end
+			G.hand.highlighted[i].ability.perma_h_x_mult = G.hand.highlighted[i].ability.perma_h_x_mult + card.ability.extra.xmult
 			G.hand.highlighted[i].ability.perma_h_dollars = G.hand.highlighted[i].ability.perma_h_dollars or 0
 			G.hand.highlighted[i].ability.perma_h_dollars = G.hand.highlighted[i].ability.perma_h_dollars + card.ability.extra.dollars
 		end
@@ -449,7 +433,7 @@ SMODS.Consumable {
 	hidden = true,
 	soul_set = 'upgrd_upgrade', --will occasionally replace upgrade cards in pack
 	soul_rate = 0.003, --rate at which it will replace upgrade cards
-	config = { max_highlighted = 2, extra = { chips = 40, mult = 8, xchips = 2, xmult = 2, dollars = 4 } },
+	config = { max_highlighted = 2, extra = { chips = 40, mult = 8, xchips = 1, xmult = 1, dollars = 4 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.max_highlighted, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xchips, card.ability.extra.xmult, card.ability.extra.dollars } }
 	end,
@@ -483,17 +467,9 @@ SMODS.Consumable {
 			G.hand.highlighted[i].ability.perma_mult = G.hand.highlighted[i].ability.perma_mult or 0
 			G.hand.highlighted[i].ability.perma_mult = G.hand.highlighted[i].ability.perma_mult + card.ability.extra.mult
 			G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips or 0
-			if G.hand.highlighted[i].ability.perma_x_chips >= 0.5 then --didnt change this because of the way the other ones scale
-				G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + card.ability.extra.xchips
-			else
-				G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + (card.ability.extra.xchips - 1)
-			end
+			G.hand.highlighted[i].ability.perma_x_chips = G.hand.highlighted[i].ability.perma_x_chips + card.ability.extra.xchips
 			G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult or 0
-			if G.hand.highlighted[i].ability.perma_x_mult >= 0.5 then
-				G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + card.ability.extra.xmult
-			else
-				G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + (card.ability.extra.xmult - 1)
-			end
+			G.hand.highlighted[i].ability.perma_x_mult = G.hand.highlighted[i].ability.perma_x_mult + card.ability.extra.xmult
 			G.hand.highlighted[i].ability.perma_p_dollars = G.hand.highlighted[i].ability.perma_p_dollars or 0
 			G.hand.highlighted[i].ability.perma_p_dollars = G.hand.highlighted[i].ability.perma_p_dollars + card.ability.extra.dollars
 		end
@@ -999,7 +975,7 @@ SMODS.Consumable {
 	set = 'upgrd_upgrade',
 	atlas = 'upgradecards',
 	pos = { x = 1, y = 2 },
-	config = { extra = { xmult = 2.5 } },
+	config = { extra = { xmult = 1.5 } },
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.xmult } }
 	end,
@@ -1031,11 +1007,8 @@ SMODS.Consumable {
 		delay(0.2)
 		for i = 1, #G.hand.cards do
 			if G.hand.cards[i]:is_suit('Hearts') then
-				if G.hand.cards[i].ability.perma_x_mult >= 0.5 then
-					G.hand.cards[i].ability.perma_x_mult = G.hand.cards[i].ability.perma_x_mult + card.ability.extra.xmult
-				else
-					G.hand.cards[i].ability.perma_x_mult = G.hand.cards[i].ability.perma_x_mult + (card.ability.extra.xmult - 1)
-				end
+				G.hand.cards[i].ability.perma_x_mult = G.hand.cards[i].ability.perma_x_mult or 0
+				G.hand.cards[i].ability.perma_x_mult = G.hand.cards[i].ability.perma_x_mult + card.ability.extra.xmult
 			end
 		end
 		for i = 1, #G.hand.cards do

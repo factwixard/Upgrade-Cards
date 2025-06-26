@@ -47,7 +47,7 @@ SMODS.ConsumableType { --.misc.dictionary.b_upgrd_upgrade_cards defines the name
 	key = 'upgrd_upgrade', --putting your modprefix here helps if there may pootentially be some other mod with the same name for a consumable type
 	primary_colour = HEX("c75062"),
 	secondary_colour = HEX("9b3b4a"), --idk what exactly this is for unless its for the "shadow" on the label
-	shop_rate = 3, --less than vanillaremade's tarot cards'
+	shop_rate = 1.5, --less than vanillaremades tarot cards
 	collection_rows = { 5, 6 } --got this from vanillaremade, could change it but it looks fine as is
 }
 SMODS.Consumable {
@@ -1041,7 +1041,7 @@ SMODS.Booster { --booster packs are pretty much all coded the same way
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 4,
-	weight = 0.95,
+	weight = 0.475,
 	group_key = 'upgrd_upgrade_pack', --groups the bosters together
 	kind = 'Upgrade', --unsure of what this does but included it anyway
 	draw_hand = true,
@@ -1058,7 +1058,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 4,
-	weight = 0.95,
+	weight = 0.475,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1075,7 +1075,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 4,
-	weight = 0.95,
+	weight = 0.475,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1092,7 +1092,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 4,
-	weight = 0.95,
+	weight = 0.475,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1109,7 +1109,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 6,
-	weight = 0.45,
+	weight = 0.225,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1126,7 +1126,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 6,
-	weight = 0.45,
+	weight = 0.225,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1143,7 +1143,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 8,
-	weight = 0.15,
+	weight = 0.075,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,
@@ -1160,7 +1160,7 @@ SMODS.Booster {
 		return { vars = { card.ability.choose, card.ability.extra } }
 	end,
 	cost = 8,
-	weight = 0.15,
+	weight = 0.075,
 	group_key = 'upgrd_upgrade_pack',
 	kind = 'Upgrade',
 	draw_hand = true,

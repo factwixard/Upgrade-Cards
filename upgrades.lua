@@ -45,6 +45,7 @@ function loc_colour(_c, _default)
 end
 SMODS.ConsumableType { --.misc.dictionary.b_upgrd_upgrade_cards defines the name put on the button in collection, other than that make a label entry for the comsumabletype
 	key = 'upgrd_upgrade', --putting your modprefix here helps if there may pootentially be some other mod with the same name for a consumable type
+	default = 'c_upgrd_chippi',
 	primary_colour = HEX("c75062"),
 	secondary_colour = HEX("9b3b4a"), --idk what exactly this is for unless its for the "shadow" on the label
 	shop_rate = 1.5, --less than vanillaremades tarot cards
@@ -330,6 +331,67 @@ SMODS.Consumable {
 		for i = 1, #G.hand.highlighted do
 			G.hand.highlighted[i].ability.perma_p_dollars = G.hand.highlighted[i].ability.perma_p_dollars or 0
 			G.hand.highlighted[i].ability.perma_p_dollars = G.hand.highlighted[i].ability.perma_p_dollars + card.ability.extra.dollars
+		end
+		for i = 1, #G.hand.highlighted do
+			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('tarot2', percent, 0.6)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.2,
+			func = function()
+				G.hand:unhighlight_all()
+				return true
+			end
+		}))
+		delay(0.5)
+	end
+}
+SMODS.Consumable {
+	key = 'repeaty',
+	set = 'upgrd_upgrade',
+	atlas = 'upgradecards',
+	pos = { x = 3, y = 2 },
+	config = { max_highlighted = 1, extra = { retriggers = 1 } },
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.max_highlighted, card.ability.extra.retriggers } }
+	end,
+	use = function(self, card, area, copier)
+		G.E_MANAGER:add_event(Event({
+			trigger = 'after',
+			delay = 0.4,
+			func = function()
+				play_sound('tarot1')
+				card:juice_up(0.3, 0.5)
+				return true
+			end
+		}))
+		for i = 1, #G.hand.highlighted do
+			local percent = 1.15 - (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					G.hand.highlighted[i]:flip()
+					play_sound('card1', percent)
+					G.hand.highlighted[i]:juice_up(0.3, 0.3)
+					return true
+				end
+			}))
+		end
+		delay(0.2)
+		for i = 1, #G.hand.highlighted do
+			G.hand.highlighted[i].ability.perma_repetitions = G.hand.highlighted[i].ability.perma_repetitions or 0
+			G.hand.highlighted[i].ability.perma_repetitions = G.hand.highlighted[i].ability.perma_repetitions + card.ability.extra.retriggers
 		end
 		for i = 1, #G.hand.highlighted do
 			local percent = 0.85 + (i - 0.999) / (#G.hand.highlighted - 0.998) * 0.3

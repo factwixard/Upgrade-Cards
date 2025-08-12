@@ -130,6 +130,15 @@ return {
 					'to {C:attention}#1#{} playing cards',
 				},
 			},
+			c_upgrd_repeaty = {
+				name = 'Repeatey',
+				text = {
+					{
+						'Adds {C:attention}#2#{} retrigger permanently',
+						'to {C:attention}#1#{} selected playing card',
+					},
+				},
+			},
 			c_upgrd_handimate = {
 				name = 'Handimate',
 				text = {
